@@ -1,0 +1,30 @@
+{% extends 'includes/inc_menu.html' %}
+{% block content %}
+{% load static %}
+<section class="caviar-about-us-area section-padding-150" id="about">
+    <div class="container">
+        <h1 class="jumbotron-heading-center">Детали</h1>
+    </div>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card-body">
+                        <p class="card-text">Номер стола: {{ object.name_table }}</p>
+                        <p class="card-text">Фамилия: {{ object.last_name }}</p>
+                        <p class="card-text">Дата: {{ object.date }}</p>
+                        <p class="card-text">Заголовок: {{ object.time }}</p>
+                        <div class="btn-group">
+                            <a class="btn btn-sm btn-outline-primary" href="{% url 'reservation:reservations_history_list' %}"
+                               role="button">Назад</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

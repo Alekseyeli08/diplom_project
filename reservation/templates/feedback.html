@@ -1,0 +1,39 @@
+{% extends 'includes/inc_menu.html' %}
+{% block content %}
+
+
+<section class="jumbotron text-center">
+
+
+    <div class="caviar-contact-area d-md-flex align-items-center" id="contact">
+        <div class="contact-form-area d-flex justify-content-end">
+            <div class="contact-form">
+                <div class="contact-form-title">
+                    <p>Оставьте заявку</p>
+                </div>
+                <form action="#" method="post" class="form-floating">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="text" name="name" class="form-control"  id="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="phone" class="form-control"  id="phone" placeholder="Ваш телефон" required>
+                        </div>
+                        <div class="col-12">
+                            <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Сообщение"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn caviar-btn"><span></span> Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="caviar-map-area wow fadeInRightBig" data-wow-delay="0.5s">
+            <div id="googleMap"></div>
+        </div>
+    </div>
+{% endblock %}
+
+

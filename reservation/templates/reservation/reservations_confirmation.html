@@ -1,0 +1,21 @@
+
+
+<div class="container col-4">
+    <div class="card text-center">
+        <div class="card-body">
+
+                <h1>Подтверждение бронирования</h1>
+                <p>Спасибо за ваше бронирование!</p>
+                <p>Информация о вашем бронировании:</p>
+                <ul>
+                    <li class="card-title text-center">Номер стола: {{ object.name_table }}</li>
+                    <li class="card-title text-center">Дата: {{ object.date }}</li>
+                    <li class="card-title text-center">Время: {{ object.time }}</li>
+                </ul>
+             <div class="btn-group">
+                            <a class="btn btn-sm btn-outline-primary" href="{% url 'reservation:home' %}"
+                               role="button">Перейти на главную страницу</a>
+                        </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+{% extends 'includes/inc_menu.html' %}
+{% block content %}
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Бронирование</h1>
+        <p class="lead text-muted">Заполите поля</p>
+
+    </div>
+</section>
+
+<div class="container">
+    <form class="row" method="post" enctype="multipart/form-data">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    {% for error in form.non_field_errors %}
+                    <div class="error">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn btn-lg btn-block btn-outline-primary">
+                    Сохранить
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,210 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Caviar - Premium Restaurant Template</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
+
+    <!-- Core Stylesheet -->
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+
+    <!-- Responsive CSS -->
+    <link href="{% static 'css/responsive/responsive.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <div class="caviar-load"></div>
+    <div class="preload-icons">
+        <img class="preload-1" src="{% static 'img/core-img/preload-1.png' %}" alt="">
+        <img class="preload-2" src="{% static 'img/core-img/preload-2.png' %}" alt="">
+        <img class="preload-3" src="{% static 'img/core-img/preload-3.png' %}" alt="">
+    </div>
+</div>
+
+<!-- ***** Search Form Area ***** -->
+<div class="caviar-search-form d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="search-close-btn" id="closeBtn">
+                    <i class="pe-7s-close-circle" aria-hidden="true"></i>
+                </div>
+                <form action="#" method="get">
+                    <input type="search" name="caviarSearch" id="search" placeholder="Введите текст">
+                    <input type="submit" class="d-none" value="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ***** Header Area Start ***** -->
+<header class="header_area" id="header">
+    <div class="container h-100">
+        <div class="row h-100">
+            <div class="col-12 h-100">
+                <nav class="h-100 navbar navbar-expand-lg align-items-center">
+                    <a class="navbar-brand" href="{% url 'reservation:home' %}">Na nozjakh</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#caviarNav"
+                            aria-controls="caviarNav" aria-expanded="false" aria-label="Toggle navigation"><span
+                            class="fa fa-bars"></span></button>
+                    <div class="collapse navbar-collapse" id="caviarNav">
+                        <ul class="navbar-nav ml-auto" id="caviarMenu">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Страницы</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{% url 'reservation:home' %}">Главная страница</a>
+                                    <a class="dropdown-item" href="#">Меню</a>
+                                    <a class="dropdown-item" href="{% url 'reservation:history' %}">О ресторане</a>
+                                    <a class="dropdown-item" href="{% url 'reservation:contacts' %}">Контактная информация</a>
+                                    <a class="dropdown-item" href="{% url 'reservation:feedback' %}">Форма для обратной связи</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'reservation:history' %}">О нас</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#menu">Меню</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#awards">Награды</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#testimonial">Отзывы</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Бронирование</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {% if user.is_authenticated %}
+                                    <a class="dropdown-item" href="{% url 'reservation:reservation_create' %}">Бронирование</a>
+                                    {% endif %}
+                                    <a class="dropdown-item" href="{% url 'reservation:table_list' %}">Занятые столы</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                {% if user.is_authenticated %}
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Личный кабнет</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">{{ object.first_name }}</a>
+                                    <a class="dropdown-item" href="{% url 'reservation:reservations_history_list' %}">История заказов</a>
+                                    <a class="dropdown-item" href="{% url 'users:profile' %}">Редактировать</a>
+                                    <a class="dropdown-item" href="{% url 'users:logout' %}">Выход</a>
+                                </div>
+                                   {% else %}
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" href="{% url 'users:login' %}" aria-expanded="false">Вход</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{% url 'users:login' %}">Вход</a>
+                                    <a class="dropdown-item" href="{% url 'users:register' %}">Регистрация</a>
+                                    </div>
+                                {% endif %}
+                            </li>
+                        </ul>
+
+                        <!-- Search Btn -->
+                        <div class="caviar-search-btn">
+                            <a id="search-btn" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<section class="caviar-hero-area" id="home">
+
+    <div class="welcome-social-info">
+        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="caviar-hero-slides owl-carousel">
+
+        <div class="single-hero-slides bg-img" style="background-image: url(/static/img/bg-img/hero-1.jpg);">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-11 col-md-6 col-lg-4">
+                        <div class="hero-content">
+                            <h2>Ресторан Na nozjakh</h2>
+                            <p>Прекрасный интерьер. Спокойная музыка. Тихое место. Забронируйте стол прямо сейчас</p>
+                            <a href="{% url 'reservation:reservation_create' %}"  class="btn caviar-btn"><span></span> Забронировать</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-slides-nav bg-img" style="background-image: url(/static/img/bg-img/hero-2.jpg);"></div>
+        </div>
+
+        <div class="single-hero-slides bg-img" style="background-image: url(/static/img/bg-img/hero-2.jpg);">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-11 col-md-6 col-lg-4">
+                        <div class="hero-content">
+                            <h2>Ресторан Na nozjakh</h2>
+                            <p>Изысканные блюда от шеф повара. Забронируйте стол прямо сейчас</p>
+                            <a href="{% url 'reservation:reservation_create' %}" class="btn caviar-btn"><span></span> Забронировать</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slider Nav -->
+            <div class="hero-slides-nav bg-img" style="background-image: url(/static/img/bg-img/hero-1.jpg);"></div>
+        </div>
+    </div>
+</section>
+<section>
+{% block content %}
+{% endblock %}
+</section>
+<footer class="caviar-footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="footer-text">
+                    <a href="{% url 'reservation:home' %}" class="navbar-brand">Na nozjakh</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                        All rights reserved | This template is made with <i class="fa fa-heart-o"
+                                                                            aria-hidden="true"></i> by <a
+                                href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Jquery-2.2.4 js -->
+<script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+<!-- Popper js -->
+<script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
+<!-- Bootstrap-4 js -->
+<script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+<!-- All Plugins js -->
+<script src="{% static 'js/others/plugins.js' %}"></script>
+<!-- Active JS -->
+<script src="{% static 'js/active.js' %}"></script>
+</body>

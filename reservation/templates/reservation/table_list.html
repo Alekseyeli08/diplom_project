@@ -1,0 +1,33 @@
+{% extends 'includes/inc_menu.html' %}
+{% block content %}
+{% load static %}
+
+<section class="caviar-about-us-area section-padding-180" id="about">
+    <div class="container">
+        <h1 class="jumbotron-heading-center">Занятые столы</h1>
+    </div>
+
+    <div class="album py-6 bg-light">
+        <div class="container">
+            {% for table,interval in tables.items %}
+            <div class="card-body">
+                <h4 class="card-header">Номер стола: {{ table }}</h4>
+
+                {% for date,times in interval.items %}
+
+                <h5 class="card-text">Дата посещения: {{ date }} </h5>
+
+
+                {% for time in times %}
+                <p class="card-text">Время: {{ time }} </p>
+                {% endfor %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+</section>
+{% endblock %}
+
