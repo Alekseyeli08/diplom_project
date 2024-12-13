@@ -19,11 +19,17 @@ class StyleFormMixin:
 
 
 class ReservationForm(StyleFormMixin, ModelForm):
+    TIME_CHOICES = [(time(hour), f"{hour:02d}:00") for hour in range(10, 20)]
+    TIME_PERIOD = [(1, '1 час'), (2, '2 часа')]
+    date = forms.DateField(widget=forms.TextInput(attrs={'type': 'date'}), label='Дата')
+    time = forms.ChoiceField(choices=TIME_CHOICES, label='Время')
+    period = forms.ChoiceField(choices=TIME_PERIOD, label='Продолжительность')
+    comment = forms.CharField(widget=forms.Textarea, required=False, label='Комментарии')
+
     class Meta:
         model = Reservations
-        fields = ["name_table", "date", "time", "quantity", "comment", "period"]
+        fields = ["name_table", "date", "time", "quantity", "period", "comment"]
 
-    # clean метод на time
     def clean(self):
         cleaned_data = super().clean()
         table = cleaned_data.get("name_table")
