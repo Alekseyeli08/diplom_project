@@ -1,21 +1,23 @@
-
-
-<div class="container col-4">
-    <div class="card text-center">
-        <div class="card-body">
-
-                <h1>Подтверждение бронирования</h1>
-                <p>Спасибо за ваше бронирование!</p>
-                <p>Информация о вашем бронировании:</p>
-                <ul>
-                    <li class="card-title text-center">Номер стола: {{ object.name_table }}</li>
-                    <li class="card-title text-center">Дата: {{ object.date }}</li>
-                    <li class="card-title text-center">Время: {{ object.time }}</li>
-                </ul>
-             <div class="btn-group">
+{% load static %}
+<!DOCTYPE html>
+   <html lang="ru">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+       <title>Подтверждение бронирования</title>
+   </head>
+            <div class="container">
+                    <h4 class="card-header">Спасибо за ваше бронирование!</h4>
+                    <h5 class="card-header">Информация о вашем бронировании:</h5>
+                        <h5 class="card-title text-center">Номер стола: {{ object.name_table }}</h5>
+                        <p class="card-text">Дата: {{ object.date }}</p>
+                        <p class="card-text">Время: {{ object.time }}</p>
+                        <div class="btn-group">
                             <a class="btn btn-sm btn-outline-primary" href="{% url 'reservation:home' %}"
                                role="button">Перейти на главную страницу</a>
                         </div>
-        </div>
+          </div>
     </div>
-</div>
+</section>
+   </html>

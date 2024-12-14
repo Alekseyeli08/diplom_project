@@ -33,28 +33,24 @@ class ReservarionCreateView(CreateView):
         reservation.owner = user
         reservation.last_name = user.last_name
         reservation.save()
-        table = reservation.name_table
         self.reservation = reservation
+        table = reservation.name_table
         date = reservation.date
         filter_reservations = Reservations.objects.filter(
             name_table=table,
             date=form.cleaned_data["date"],
             time=form.cleaned_data["time"],
-            is_active=True,
+            is_active=True
         )
-
         for reserve in filter_reservations:
             time = reserve.time
             periods = reserve.period
-            reserv_time = datetime.combine(date.today(), time) + timedelta(
-                hours=periods
-            )
+            reserv = datetime.combine(date.today(), time) + timedelta(
+                hours=periods)
+            if time <= reservation.time <= reserv.time():
+                return super().form_valid(form)
+        return super().form_invalid(form)
 
-            if time <= reservation.time <= reserv_time.time():
-                return super().form_invalid(form)
-                # return form.add_error('time', 'Столик уже забронирован')
-
-        return super().form_valid(form)
 
 
 class TableListView(ListView):

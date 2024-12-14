@@ -2,7 +2,7 @@ from datetime import datetime, time, timedelta
 
 from django import forms
 from django.core.exceptions import ValidationError
-from django.forms import BooleanField, DateInput, ModelForm, Textarea, TextInput
+from django.forms import BooleanField, ModelForm
 from django.utils import timezone
 
 from reservation.models import Reservations
